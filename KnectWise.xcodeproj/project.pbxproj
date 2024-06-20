@@ -1,0 +1,632 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		5D44CF8B2B479DBE000FA013 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D44CF8A2B479DBE000FA013 /* HomeViewController.swift */; };
+		5D44CF8D2B479DCB000FA013 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D44CF8C2B479DCB000FA013 /* ChatViewController.swift */; };
+		5D44CF8F2B479DD5000FA013 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D44CF8E2B479DD5000FA013 /* ProfileViewController.swift */; };
+		5D4BB7382B40D91E003C423D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D4BB7372B40D91E003C423D /* AppDelegate.swift */; };
+		5D4BB73A2B40D91E003C423D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D4BB7392B40D91E003C423D /* SceneDelegate.swift */; };
+		5D4BB73C2B40D91E003C423D /* WelcomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D4BB73B2B40D91E003C423D /* WelcomeController.swift */; };
+		5D4BB73F2B40D91E003C423D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5D4BB73D2B40D91E003C423D /* Main.storyboard */; };
+		5D4BB7412B40D91F003C423D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5D4BB7402B40D91F003C423D /* Assets.xcassets */; };
+		5D4BB7442B40D91F003C423D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5D4BB7422B40D91F003C423D /* LaunchScreen.storyboard */; };
+		5D4BB75D2B40DBF4003C423D /* Roboto-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5D4BB75C2B40DBF4003C423D /* Roboto-Bold.ttf */; };
+		5D4BB7632B40DCE6003C423D /* Roboto-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5D4BB7622B40DCE6003C423D /* Roboto-Medium.ttf */; };
+		5D4BB7692B40E40F003C423D /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D4BB7682B40E40F003C423D /* UserModel.swift */; };
+		5D4BB76B2B40E46A003C423D /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D4BB76A2B40E46A003C423D /* SignInViewController.swift */; };
+		5D4BB76D2B40E473003C423D /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D4BB76C2B40E473003C423D /* SignUpViewController.swift */; };
+		5D4BB76F2B40E775003C423D /* FirebaseStoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D4BB76E2B40E775003C423D /* FirebaseStoreManager.swift */; };
+		5D4BB7712B40E786003C423D /* MyExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D4BB7702B40E786003C423D /* MyExtension.swift */; };
+		5D4BB7732B40E7A4003C423D /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D4BB7722B40E7A4003C423D /* Constants.swift */; };
+		5D4BB7752B414E9D003C423D /* MyGesture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D4BB7742B414E9D003C423D /* MyGesture.swift */; };
+		5D70BC642B829DEA00F96ECB /* NotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D70BC632B829DEA00F96ECB /* NotificationViewController.swift */; };
+		5D70BC662B829E0300F96ECB /* NotificationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D70BC652B829E0300F96ECB /* NotificationModel.swift */; };
+		5D70BC682B829E4F00F96ECB /* AdminNotificationsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D70BC672B829E4F00F96ECB /* AdminNotificationsTableViewCell.swift */; };
+		5DABB3682B459DEC006AE8A8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5DABB3672B459DEC006AE8A8 /* GoogleService-Info.plist */; };
+		5DABB36B2B45A4C1006AE8A8 /* panton-narrow-regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5DABB3692B45A4C0006AE8A8 /* panton-narrow-regular.otf */; };
+		5DABB36C2B45A4C1006AE8A8 /* Panton Narrow SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5DABB36A2B45A4C1006AE8A8 /* Panton Narrow SemiBold.ttf */; };
+		5DABB36E2B45E33E006AE8A8 /* TabbarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DABB36D2B45E33E006AE8A8 /* TabbarViewController.swift */; };
+		5DABB3702B45E388006AE8A8 /* ProfileInfo1ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DABB36F2B45E388006AE8A8 /* ProfileInfo1ViewController.swift */; };
+		5DABB3722B45EDD6006AE8A8 /* ProfileInfo2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DABB3712B45EDD6006AE8A8 /* ProfileInfo2ViewController.swift */; };
+		5DABB3742B45EDEB006AE8A8 /* ProfileInfo3ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DABB3732B45EDEB006AE8A8 /* ProfileInfo3ViewController.swift */; };
+		5DABB3762B45EE03006AE8A8 /* ProfileInfo4ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DABB3752B45EE03006AE8A8 /* ProfileInfo4ViewController.swift */; };
+		5DABB3782B45FA8D006AE8A8 /* MediaModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DABB3772B45FA8D006AE8A8 /* MediaModel.swift */; };
+		5DAF12DD2B93D4B700089CF0 /* EditProfile1ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DAF12DC2B93D4B700089CF0 /* EditProfile1ViewController.swift */; };
+		5DAF12DF2B93D4C500089CF0 /* EditProfile2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DAF12DE2B93D4C500089CF0 /* EditProfile2ViewController.swift */; };
+		5DAF12E12B93D4D000089CF0 /* EditProfile3ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DAF12E02B93D4D000089CF0 /* EditProfile3ViewController.swift */; };
+		5DAF12E32B93D4E000089CF0 /* EditProfile4ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DAF12E22B93D4E000089CF0 /* EditProfile4ViewController.swift */; };
+		CCA8998A19E17F2DF09E894F /* Pods_KnectWise.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93D5B654AFA7FE2ADF756C59 /* Pods_KnectWise.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		01493D3F4742DB0986CFD34E /* Pods-KnectWise.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KnectWise.debug.xcconfig"; path = "Target Support Files/Pods-KnectWise/Pods-KnectWise.debug.xcconfig"; sourceTree = "<group>"; };
+		5D44CF8A2B479DBE000FA013 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		5D44CF8C2B479DCB000FA013 /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
+		5D44CF8E2B479DD5000FA013 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		5D4BB7342B40D91E003C423D /* KnectWise.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KnectWise.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		5D4BB7372B40D91E003C423D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		5D4BB7392B40D91E003C423D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		5D4BB73B2B40D91E003C423D /* WelcomeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeController.swift; sourceTree = "<group>"; };
+		5D4BB73E2B40D91E003C423D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		5D4BB7402B40D91F003C423D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		5D4BB7432B40D91F003C423D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		5D4BB7452B40D91F003C423D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5D4BB75C2B40DBF4003C423D /* Roboto-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Bold.ttf"; sourceTree = "<group>"; };
+		5D4BB7622B40DCE6003C423D /* Roboto-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Medium.ttf"; sourceTree = "<group>"; };
+		5D4BB7682B40E40F003C423D /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
+		5D4BB76A2B40E46A003C423D /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
+		5D4BB76C2B40E473003C423D /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		5D4BB76E2B40E775003C423D /* FirebaseStoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseStoreManager.swift; sourceTree = "<group>"; };
+		5D4BB7702B40E786003C423D /* MyExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyExtension.swift; sourceTree = "<group>"; };
+		5D4BB7722B40E7A4003C423D /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		5D4BB7742B414E9D003C423D /* MyGesture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyGesture.swift; sourceTree = "<group>"; };
+		5D70BC632B829DEA00F96ECB /* NotificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationViewController.swift; sourceTree = "<group>"; };
+		5D70BC652B829E0300F96ECB /* NotificationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationModel.swift; sourceTree = "<group>"; };
+		5D70BC672B829E4F00F96ECB /* AdminNotificationsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminNotificationsTableViewCell.swift; sourceTree = "<group>"; };
+		5DABB3672B459DEC006AE8A8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		5DABB3692B45A4C0006AE8A8 /* panton-narrow-regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "panton-narrow-regular.otf"; sourceTree = "<group>"; };
+		5DABB36A2B45A4C1006AE8A8 /* Panton Narrow SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Panton Narrow SemiBold.ttf"; sourceTree = "<group>"; };
+		5DABB36D2B45E33E006AE8A8 /* TabbarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabbarViewController.swift; sourceTree = "<group>"; };
+		5DABB36F2B45E388006AE8A8 /* ProfileInfo1ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileInfo1ViewController.swift; sourceTree = "<group>"; };
+		5DABB3712B45EDD6006AE8A8 /* ProfileInfo2ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileInfo2ViewController.swift; sourceTree = "<group>"; };
+		5DABB3732B45EDEB006AE8A8 /* ProfileInfo3ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileInfo3ViewController.swift; sourceTree = "<group>"; };
+		5DABB3752B45EE03006AE8A8 /* ProfileInfo4ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileInfo4ViewController.swift; sourceTree = "<group>"; };
+		5DABB3772B45FA8D006AE8A8 /* MediaModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaModel.swift; sourceTree = "<group>"; };
+		5DABB3792B462052006AE8A8 /* KnectWise.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = KnectWise.entitlements; sourceTree = "<group>"; };
+		5DAF12DC2B93D4B700089CF0 /* EditProfile1ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfile1ViewController.swift; sourceTree = "<group>"; };
+		5DAF12DE2B93D4C500089CF0 /* EditProfile2ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfile2ViewController.swift; sourceTree = "<group>"; };
+		5DAF12E02B93D4D000089CF0 /* EditProfile3ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfile3ViewController.swift; sourceTree = "<group>"; };
+		5DAF12E22B93D4E000089CF0 /* EditProfile4ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfile4ViewController.swift; sourceTree = "<group>"; };
+		87ADC8985D30FB86C0329E8D /* Pods-KnectWise.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KnectWise.release.xcconfig"; path = "Target Support Files/Pods-KnectWise/Pods-KnectWise.release.xcconfig"; sourceTree = "<group>"; };
+		93D5B654AFA7FE2ADF756C59 /* Pods_KnectWise.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KnectWise.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		5D4BB7312B40D91E003C423D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CCA8998A19E17F2DF09E894F /* Pods_KnectWise.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		5D4BB72B2B40D91E003C423D = {
+			isa = PBXGroup;
+			children = (
+				5D4BB7362B40D91E003C423D /* KnectWise */,
+				5D4BB7352B40D91E003C423D /* Products */,
+				96DA6082FD21076285250B7C /* Pods */,
+				F800F8C41254562FB4EA0121 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		5D4BB7352B40D91E003C423D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				5D4BB7342B40D91E003C423D /* KnectWise.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		5D4BB7362B40D91E003C423D /* KnectWise */ = {
+			isa = PBXGroup;
+			children = (
+				5DABB3792B462052006AE8A8 /* KnectWise.entitlements */,
+				5D4BB7672B40DD31003C423D /* Model */,
+				5D4BB7662B40DD28003C423D /* Utils */,
+				5D4BB7652B40DD0B003C423D /* View */,
+				5D4BB7642B40DD02003C423D /* ViewController */,
+				5D4BB74B2B40DB55003C423D /* Fonts */,
+				5D4BB7372B40D91E003C423D /* AppDelegate.swift */,
+				5D4BB7392B40D91E003C423D /* SceneDelegate.swift */,
+				5DABB3672B459DEC006AE8A8 /* GoogleService-Info.plist */,
+				5D4BB7452B40D91F003C423D /* Info.plist */,
+			);
+			path = KnectWise;
+			sourceTree = "<group>";
+		};
+		5D4BB74B2B40DB55003C423D /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				5DABB36A2B45A4C1006AE8A8 /* Panton Narrow SemiBold.ttf */,
+				5DABB3692B45A4C0006AE8A8 /* panton-narrow-regular.otf */,
+				5D4BB7622B40DCE6003C423D /* Roboto-Medium.ttf */,
+				5D4BB75C2B40DBF4003C423D /* Roboto-Bold.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		5D4BB7642B40DD02003C423D /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				5D4BB73B2B40D91E003C423D /* WelcomeController.swift */,
+				5D4BB76A2B40E46A003C423D /* SignInViewController.swift */,
+				5D4BB76C2B40E473003C423D /* SignUpViewController.swift */,
+				5DABB36F2B45E388006AE8A8 /* ProfileInfo1ViewController.swift */,
+				5DABB3712B45EDD6006AE8A8 /* ProfileInfo2ViewController.swift */,
+				5DABB3732B45EDEB006AE8A8 /* ProfileInfo3ViewController.swift */,
+				5DABB3752B45EE03006AE8A8 /* ProfileInfo4ViewController.swift */,
+				5DABB36D2B45E33E006AE8A8 /* TabbarViewController.swift */,
+				5D44CF8A2B479DBE000FA013 /* HomeViewController.swift */,
+				5D44CF8C2B479DCB000FA013 /* ChatViewController.swift */,
+				5D44CF8E2B479DD5000FA013 /* ProfileViewController.swift */,
+				5D70BC632B829DEA00F96ECB /* NotificationViewController.swift */,
+				5DAF12DC2B93D4B700089CF0 /* EditProfile1ViewController.swift */,
+				5DAF12DE2B93D4C500089CF0 /* EditProfile2ViewController.swift */,
+				5DAF12E02B93D4D000089CF0 /* EditProfile3ViewController.swift */,
+				5DAF12E22B93D4E000089CF0 /* EditProfile4ViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		5D4BB7652B40DD0B003C423D /* View */ = {
+			isa = PBXGroup;
+			children = (
+				5D4BB73D2B40D91E003C423D /* Main.storyboard */,
+				5D4BB7402B40D91F003C423D /* Assets.xcassets */,
+				5D4BB7422B40D91F003C423D /* LaunchScreen.storyboard */,
+				5D70BC672B829E4F00F96ECB /* AdminNotificationsTableViewCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		5D4BB7662B40DD28003C423D /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				5D4BB76E2B40E775003C423D /* FirebaseStoreManager.swift */,
+				5D4BB7702B40E786003C423D /* MyExtension.swift */,
+				5D4BB7722B40E7A4003C423D /* Constants.swift */,
+				5D4BB7742B414E9D003C423D /* MyGesture.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		5D4BB7672B40DD31003C423D /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				5D4BB7682B40E40F003C423D /* UserModel.swift */,
+				5DABB3772B45FA8D006AE8A8 /* MediaModel.swift */,
+				5D70BC652B829E0300F96ECB /* NotificationModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		96DA6082FD21076285250B7C /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				01493D3F4742DB0986CFD34E /* Pods-KnectWise.debug.xcconfig */,
+				87ADC8985D30FB86C0329E8D /* Pods-KnectWise.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		F800F8C41254562FB4EA0121 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				93D5B654AFA7FE2ADF756C59 /* Pods_KnectWise.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		5D4BB7332B40D91E003C423D /* KnectWise */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5D4BB7482B40D91F003C423D /* Build configuration list for PBXNativeTarget "KnectWise" */;
+			buildPhases = (
+				93B66AC16E374653EA9241C6 /* [CP] Check Pods Manifest.lock */,
+				5D4BB7302B40D91E003C423D /* Sources */,
+				5D4BB7312B40D91E003C423D /* Frameworks */,
+				5D4BB7322B40D91E003C423D /* Resources */,
+				9E4D11551C72D35D1CB3C56C /* [CP] Embed Pods Frameworks */,
+				153F2D0DCCC5BB7017273B78 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = KnectWise;
+			productName = KnectWise;
+			productReference = 5D4BB7342B40D91E003C423D /* KnectWise.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		5D4BB72C2B40D91E003C423D /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1510;
+				LastUpgradeCheck = 1510;
+				TargetAttributes = {
+					5D4BB7332B40D91E003C423D = {
+						CreatedOnToolsVersion = 15.1;
+					};
+				};
+			};
+			buildConfigurationList = 5D4BB72F2B40D91E003C423D /* Build configuration list for PBXProject "KnectWise" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 5D4BB72B2B40D91E003C423D;
+			productRefGroup = 5D4BB7352B40D91E003C423D /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				5D4BB7332B40D91E003C423D /* KnectWise */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		5D4BB7322B40D91E003C423D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5DABB3682B459DEC006AE8A8 /* GoogleService-Info.plist in Resources */,
+				5D4BB7442B40D91F003C423D /* LaunchScreen.storyboard in Resources */,
+				5D4BB7632B40DCE6003C423D /* Roboto-Medium.ttf in Resources */,
+				5D4BB7412B40D91F003C423D /* Assets.xcassets in Resources */,
+				5D4BB75D2B40DBF4003C423D /* Roboto-Bold.ttf in Resources */,
+				5D4BB73F2B40D91E003C423D /* Main.storyboard in Resources */,
+				5DABB36C2B45A4C1006AE8A8 /* Panton Narrow SemiBold.ttf in Resources */,
+				5DABB36B2B45A4C1006AE8A8 /* panton-narrow-regular.otf in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		153F2D0DCCC5BB7017273B78 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-KnectWise/Pods-KnectWise-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-KnectWise/Pods-KnectWise-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-KnectWise/Pods-KnectWise-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		93B66AC16E374653EA9241C6 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-KnectWise-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9E4D11551C72D35D1CB3C56C /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-KnectWise/Pods-KnectWise-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-KnectWise/Pods-KnectWise-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-KnectWise/Pods-KnectWise-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		5D4BB7302B40D91E003C423D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5D70BC662B829E0300F96ECB /* NotificationModel.swift in Sources */,
+				5DAF12E12B93D4D000089CF0 /* EditProfile3ViewController.swift in Sources */,
+				5DAF12DD2B93D4B700089CF0 /* EditProfile1ViewController.swift in Sources */,
+				5DABB3702B45E388006AE8A8 /* ProfileInfo1ViewController.swift in Sources */,
+				5D4BB76D2B40E473003C423D /* SignUpViewController.swift in Sources */,
+				5D4BB73C2B40D91E003C423D /* WelcomeController.swift in Sources */,
+				5DAF12E32B93D4E000089CF0 /* EditProfile4ViewController.swift in Sources */,
+				5D44CF8B2B479DBE000FA013 /* HomeViewController.swift in Sources */,
+				5DABB36E2B45E33E006AE8A8 /* TabbarViewController.swift in Sources */,
+				5D4BB76F2B40E775003C423D /* FirebaseStoreManager.swift in Sources */,
+				5D4BB7382B40D91E003C423D /* AppDelegate.swift in Sources */,
+				5D4BB7692B40E40F003C423D /* UserModel.swift in Sources */,
+				5D4BB76B2B40E46A003C423D /* SignInViewController.swift in Sources */,
+				5D44CF8F2B479DD5000FA013 /* ProfileViewController.swift in Sources */,
+				5D70BC642B829DEA00F96ECB /* NotificationViewController.swift in Sources */,
+				5DABB3742B45EDEB006AE8A8 /* ProfileInfo3ViewController.swift in Sources */,
+				5D4BB73A2B40D91E003C423D /* SceneDelegate.swift in Sources */,
+				5D4BB7752B414E9D003C423D /* MyGesture.swift in Sources */,
+				5D4BB7712B40E786003C423D /* MyExtension.swift in Sources */,
+				5DABB3782B45FA8D006AE8A8 /* MediaModel.swift in Sources */,
+				5DABB3762B45EE03006AE8A8 /* ProfileInfo4ViewController.swift in Sources */,
+				5DABB3722B45EDD6006AE8A8 /* ProfileInfo2ViewController.swift in Sources */,
+				5D44CF8D2B479DCB000FA013 /* ChatViewController.swift in Sources */,
+				5D70BC682B829E4F00F96ECB /* AdminNotificationsTableViewCell.swift in Sources */,
+				5DAF12DF2B93D4C500089CF0 /* EditProfile2ViewController.swift in Sources */,
+				5D4BB7732B40E7A4003C423D /* Constants.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		5D4BB73D2B40D91E003C423D /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5D4BB73E2B40D91E003C423D /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		5D4BB7422B40D91F003C423D /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5D4BB7432B40D91F003C423D /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		5D4BB7462B40D91F003C423D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		5D4BB7472B40D91F003C423D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		5D4BB7492B40D91F003C423D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 01493D3F4742DB0986CFD34E /* Pods-KnectWise.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = KnectWise/KnectWise.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 8;
+				DEVELOPMENT_TEAM = 7W2Q7GCKZ5;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = KnectWise/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = KnectWise;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.social-networking";
+				INFOPLIST_KEY_NSAppleMusicUsageDescription = "KnectWise app need your media library access to fetch profile photo.";
+				INFOPLIST_KEY_NSCameraUsageDescription = "KnectWise app need your camera access to capture profile photo.";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "KnectWise app need your microphone access to record video.";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "KnectWise app need your photo library access to fetch profile photo.";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.8;
+				PRODUCT_BUNDLE_IDENTIFIER = in.softment.KnectWise;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		5D4BB74A2B40D91F003C423D /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 87ADC8985D30FB86C0329E8D /* Pods-KnectWise.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = KnectWise/KnectWise.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 8;
+				DEVELOPMENT_TEAM = 7W2Q7GCKZ5;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = KnectWise/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = KnectWise;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.social-networking";
+				INFOPLIST_KEY_NSAppleMusicUsageDescription = "KnectWise app need your media library access to fetch profile photo.";
+				INFOPLIST_KEY_NSCameraUsageDescription = "KnectWise app need your camera access to capture profile photo.";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "KnectWise app need your microphone access to record video.";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "KnectWise app need your photo library access to fetch profile photo.";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.8;
+				PRODUCT_BUNDLE_IDENTIFIER = in.softment.KnectWise;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		5D4BB72F2B40D91E003C423D /* Build configuration list for PBXProject "KnectWise" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5D4BB7462B40D91F003C423D /* Debug */,
+				5D4BB7472B40D91F003C423D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5D4BB7482B40D91F003C423D /* Build configuration list for PBXNativeTarget "KnectWise" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5D4BB7492B40D91F003C423D /* Debug */,
+				5D4BB74A2B40D91F003C423D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 5D4BB72C2B40D91E003C423D /* Project object */;
+}
