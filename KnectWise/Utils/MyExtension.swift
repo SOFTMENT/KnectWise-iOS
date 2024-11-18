@@ -172,6 +172,21 @@ extension Date {
 
 extension UIViewController {
     
+    func boostDaysLeft(boostExpirationDate : Date) -> Int {
+        return Calendar.current.dateComponents([.day], from: Date(), to: boostExpirationDate).day ?? 0
+    }
+    
+    func getUserDataByID(uid: String, completion: @escaping (UserModel?, String?) -> Void) {
+        FirebaseStoreManager.db.collection("Users").document(uid)
+            .getDocument(as: UserModel.self, completion: { result in
+                switch result {
+                case .success(let userModel):
+                    completion(userModel, nil)
+                case .failure(let error):
+                    completion(nil, error.localizedDescription)
+                }
+            })
+    }
   
     
     func loginWithGoogle() {
@@ -183,7 +198,7 @@ extension UIViewController {
         // Start the sign in flow!
         GIDSignIn.sharedInstance.signIn(withPresenting : self) { [unowned self] result, error in
             
-            if let error = error {
+            if error != nil {
               
                 return
             }
@@ -773,39 +788,40 @@ extension UIViewController {
                         self.showError(error!.localizedDescription)
                     }
                     else {
-                        if let doc = snapshot {
-                            if doc.exists {
-                                self.getUserData(uid: user.uid, showProgress: true)
+                        if let doc = snapshot,doc.exists, let data = doc.data(), let uid = data["uid"] as? String, !uid.isEmpty {
+                            
+                            self.getUserData(uid: uid, showProgress: true)
                                 
+                          
+                        }
+                        
+                        else {
+                            
+                            
+                            var emailId = ""
+                            let provider =  user.providerData
+                            var name = ""
+                            for firUserInfo in provider {
+                                if let email = firUserInfo.email {
+                                    emailId = email
+                                }
+                            }
+                            
+                            if type == "apple" {
+                                name = displayName
                             }
                             else {
-                                
-                                
-                                var emailId = ""
-                                let provider =  user.providerData
-                                var name = ""
-                                for firUserInfo in provider {
-                                    if let email = firUserInfo.email {
-                                        emailId = email
-                                    }
-                                }
-                                
-                                if type == "apple" {
-                                    name = displayName
-                                }
-                                else {
-                                    name = user.displayName!.capitalized
-                                }
-                                
-                                let userData = UserModel()
-                                userData.fullName = name
-                                userData.email = emailId
-                                userData.uid = user.uid
-                                userData.registredAt = user.metadata.creationDate ?? Date()
-                                userData.regiType = type
-                                
-                                self.addUserData(userData: userData)
+                                name = user.displayName!.capitalized
                             }
+                            
+                            let userData = UserModel()
+                            userData.fullName = name
+                            userData.email = emailId
+                            userData.uid = user.uid
+                            userData.registredAt = user.metadata.creationDate ?? Date()
+                            userData.regiType = type
+                            
+                            self.addUserData(userData: userData)
                         }
                         
                     }

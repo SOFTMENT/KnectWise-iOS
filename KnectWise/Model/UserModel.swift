@@ -98,7 +98,14 @@ class UserModel : NSObject, Codable {
     var profileInfo3Finish : Bool?
     var profileInfo4Finish : Bool?
     
+    var latitude : Double?
+    var longtitude : Double?
+    var geoHash : String?
     
+    var notificationToken : String?
+    
+    var boostExpireDate : Date?
+    var isBoosted : Bool?
     private static var userData : UserModel?
     
     static func clearUserData() {
@@ -122,5 +129,9 @@ class UserModel : NSObject, Codable {
     override init() {
         
     }
+    
+ 
+  
+
     
 }

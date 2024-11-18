@@ -11,6 +11,8 @@ import GoogleSignIn
 import Firebase
 import Cloudinary
 import GooglePlaces
+import RevenueCat
+
 
 
 @main
@@ -55,7 +57,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
           UIUserNotificationSettings(types: [.alert, .badge, .sound], categories: nil)
           application.registerUserNotificationSettings(settings)
         }
-        
+        Purchases.logLevel = .debug
+
+        Purchases.configure(withAPIKey: "appl_LKhBbAhawDpAauCZmZxuTGxdhdQ")
         
         let config = CLDConfiguration(cloudName: "djrgurbpt", apiKey: "685684694555712",apiSecret: "2KipneKstN9iUB6uBfOK7Qed9No")
         cloudinary = CLDCloudinary(configuration: config)

@@ -5,6 +5,7 @@
 //  Created by Vijay Rathore on 04/01/24.
 //
 import UIKit
+import FirebaseMessaging
 
 class TabbarViewController : UITabBarController, UITabBarControllerDelegate {
   
@@ -33,12 +34,36 @@ class TabbarViewController : UITabBarController, UITabBarControllerDelegate {
         tabBarItems.image = deSelectedImage3
         tabBarItems.selectedImage = selectedImage3
         
-        
+        updateFCMToken()
    
         
         
         
         
+    }
+    // Updates the FCM token for notifications
+    func updateFCMToken() {
+        Messaging.messaging().token { token, error in
+            if let error = error {
+                print("Error fetching FCM token: \(error)")
+            } else if let token = token {
+                self.updateUserNotificationToken(token)
+            }
+        }
+    }
+
+    
+    // Helper function to update user and business notification tokens
+    private func updateUserNotificationToken(_ token: String) {
+        if let currentUser = FirebaseStoreManager.auth.currentUser {
+            UserModel.data?.notificationToken = token
+            FirebaseStoreManager.db.collection("Users").document(currentUser.uid)
+                .setData(["notificationToken": token], merge: true)
+
+           
+        } else {
+            self.logout()
+        }
     }
     
 }

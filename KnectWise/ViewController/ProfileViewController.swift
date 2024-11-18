@@ -14,7 +14,6 @@ import FirebaseFirestore
 
 class ProfileViewController : UIViewController {
     @IBOutlet weak var editProfile: UIView!
-    
     @IBOutlet weak var deleteAccountBtn: UIView!
     @IBOutlet weak var termsOfService: UIView!
     @IBOutlet weak var privacy: UIView!
@@ -103,24 +102,20 @@ class ProfileViewController : UIViewController {
                 let userId = user.uid
                 
                         Firestore.firestore().collection("Users").document(userId).delete { error in
-                           
+                            UserModel.clearUserData()
+                            try? FirebaseStoreManager.auth.signOut()
                             if error == nil {
                                 user.delete { error in
                                     self.ProgressHUDHide()
-                                    if error == nil {
-                                        self.logout()
-                                        
-                                    }
-                                    else {
+                                   
                                         self.beRootScreen(mIdentifier: Constants.StroyBoard.signInViewController)
-                                    }
-    
-                                
+                                    
+                        
                                 }
                                 
                             }
                             else {
-                       
+                                self.ProgressHUDHide()
                                 self.showError(error!.localizedDescription)
                             }
                         }

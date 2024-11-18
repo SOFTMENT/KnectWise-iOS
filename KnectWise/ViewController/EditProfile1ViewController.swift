@@ -49,7 +49,6 @@ class EditProfile1ViewController : UIViewController {
     @IBOutlet weak var playIcon8: UIImageView!
     @IBOutlet weak var playIcon9: UIImageView!
     
-    
     @IBOutlet weak var uploadAndContinueBtn: UIButton!
     var isProfileSelected = false
     var imageIndex = 0
@@ -76,10 +75,11 @@ class EditProfile1ViewController : UIViewController {
         
         getMedia(uid: user.uid!) { medias, error in
             if let medias = medias {
+             
                 for media in medias {
-                    
+                 
                 
-                    switch Int(media.id!) {
+                    switch Int(media.index!) {
                    
                     case 1:
                         if let url = media.url, !url.isEmpty {

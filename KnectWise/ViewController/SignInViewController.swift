@@ -13,7 +13,6 @@ import Firebase
 fileprivate var currentNonce: String?
 class SignInViewController : UIViewController {
     
-    
     @IBOutlet weak var logo: UIImageView!
     @IBOutlet weak var googleBtn: UIView!
     @IBOutlet weak var appleBtn: UIView!
