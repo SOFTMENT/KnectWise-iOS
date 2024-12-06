@@ -13,6 +13,7 @@ class UserTableViewCell: UITableViewCell {
     @IBOutlet weak var mName: UILabel!
     @IBOutlet weak var mSubtitle: UILabel!
     
+    @IBOutlet weak var menuBtn: UIImageView!
     override class func awakeFromNib() {
         
     }

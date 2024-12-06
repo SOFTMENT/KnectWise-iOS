@@ -3,7 +3,6 @@
 //  Lottie
 //
 
-import Foundation
 import QuartzCore
 
 // MARK: - LottieAnimationLayer
@@ -32,7 +31,7 @@ public class LottieAnimationLayer: CALayer {
     self.logger = logger
     super.init()
     makeAnimationLayer(usingEngine: configuration.renderingEngine)
-    if let animation = animation {
+    if let animation {
       frame = animation.bounds
     }
   }
@@ -58,7 +57,7 @@ public class LottieAnimationLayer: CALayer {
     loopMode = dotLottieAnimation?.configuration.loopMode ?? .playOnce
     animationSpeed = CGFloat(dotLottieAnimation?.configuration.speed ?? 1)
     makeAnimationLayer(usingEngine: configuration.renderingEngine)
-    if let animation = animation {
+    if let animation {
       frame = animation.bounds
     }
   }
@@ -104,7 +103,7 @@ public class LottieAnimationLayer: CALayer {
   ///
   /// - Parameter completion: An optional completion closure to be called when the animation completes playing.
   open func play(completion: LottieCompletionBlock? = nil) {
-    guard let animation = animation else { return }
+    guard let animation else { return }
 
     defer {
       currentPlaybackMode = .playing(.fromProgress(nil, toProgress: 1, loopMode: loopMode))
@@ -136,7 +135,7 @@ public class LottieAnimationLayer: CALayer {
     loopMode: LottieLoopMode? = nil,
     completion: LottieCompletionBlock? = nil)
   {
-    guard let animation = animation else { return }
+    guard let animation else { return }
 
     defer {
       currentPlaybackMode = .playing(.fromProgress(fromProgress, toProgress: toProgress, loopMode: loopMode ?? self.loopMode))
@@ -148,7 +147,7 @@ public class LottieAnimationLayer: CALayer {
     }
 
     removeCurrentAnimationIfNecessary()
-    if let loopMode = loopMode {
+    if let loopMode {
       /// Set the loop mode, if one was supplied
       self.loopMode = loopMode
     }
@@ -181,7 +180,7 @@ public class LottieAnimationLayer: CALayer {
     }
 
     removeCurrentAnimationIfNecessary()
-    if let loopMode = loopMode {
+    if let loopMode {
       /// Set the loop mode, if one was supplied
       self.loopMode = loopMode
     }
@@ -228,22 +227,22 @@ public class LottieAnimationLayer: CALayer {
       return
     }
 
-    guard let animation = animation, let markers = animation.markerMap, let to = markers[toMarker] else {
+    guard let animation, let markers = animation.markerMap, let to = markers[toMarker] else {
       return
     }
 
     removeCurrentAnimationIfNecessary()
-    if let loopMode = loopMode {
+    if let loopMode {
       /// Set the loop mode, if one was supplied
       self.loopMode = loopMode
     }
 
-    let fromTime: CGFloat
-    if let fromName = fromMarker, let from = markers[fromName] {
-      fromTime = CGFloat(from.frameTime)
-    } else {
-      fromTime = currentFrame
-    }
+    let fromTime: CGFloat =
+      if let fromName = fromMarker, let from = markers[fromName] {
+        CGFloat(from.frameTime)
+      } else {
+        currentFrame
+      }
 
     let playTo = playEndMarkerFrame ? CGFloat(to.frameTime) : CGFloat(to.frameTime) - 1
     let context = AnimationContext(
@@ -331,7 +330,7 @@ public class LottieAnimationLayer: CALayer {
       // If the completion handler is called with `completed: false` (which typically means
       // that another animation was played by calling some `play` method),
       // we should cancel the marker sequence and not play the next marker.
-      guard completed, let self = self else {
+      guard completed, let self else {
         completion?(false)
         return
       }
@@ -340,7 +339,7 @@ public class LottieAnimationLayer: CALayer {
         // If we don't have any more markers to play, then the marker sequence has completed.
         completion?(completed)
       } else {
-        self.play(markers: followingMarkers, completion: completion)
+        play(markers: followingMarkers, completion: completion)
       }
     })
   }
@@ -371,6 +370,7 @@ public class LottieAnimationLayer: CALayer {
 
     case .frame(let animationFrameTime):
       currentFrame = animationFrameTime
+
     case .time(let timeInterval):
       currentTime = timeInterval
 
@@ -488,7 +488,7 @@ public class LottieAnimationLayer: CALayer {
 
   /// A closure called when the animation layer has been loaded.
   /// Will inform the receiver the type of rendering engine that is used for the layer.
-  public var animationLayerDidLoad:((_ animationLayer: LottieAnimationLayer, _ renderingEngine: RenderingEngineOption) -> Void)?
+  public var animationLayerDidLoad: ((_ animationLayer: LottieAnimationLayer, _ renderingEngine: RenderingEngineOption) -> Void)?
 
   /// The configuration that this `LottieAnimationView` uses when playing its animation
   public var configuration: LottieConfiguration {
@@ -549,7 +549,7 @@ public class LottieAnimationLayer: CALayer {
     didSet {
       makeAnimationLayer(usingEngine: configuration.renderingEngine)
 
-      if let animation = animation {
+      if let animation {
         animationLoaded?(self, animation)
       }
     }
@@ -584,7 +584,7 @@ public class LottieAnimationLayer: CALayer {
   /// ```
   public var animationLoaded: ((_ animationLayer: LottieAnimationLayer, _ animation: LottieAnimation) -> Void)? {
     didSet {
-      if let animation = animation {
+      if let animation {
         animationLoaded?(self, animation)
       }
     }
@@ -662,7 +662,7 @@ public class LottieAnimationLayer: CALayer {
   /// Note 2: If `animation` is nil, setting this will fallback to 0
   public var currentProgress: AnimationProgressTime {
     set {
-      if let animation = animation {
+      if let animation {
         currentFrame = animation.frameTime(forProgress: newValue)
         currentPlaybackMode = .paused(at: .progress(newValue))
       } else {
@@ -670,10 +670,10 @@ public class LottieAnimationLayer: CALayer {
       }
     }
     get {
-      if let animation = animation {
-        return animation.progressTime(forFrame: currentFrame)
+      if let animation {
+        animation.progressTime(forFrame: currentFrame)
       } else {
-        return 0
+        0
       }
     }
   }
@@ -684,7 +684,7 @@ public class LottieAnimationLayer: CALayer {
   /// Note 2: If `animation` is nil, setting this will fallback to 0
   public var currentTime: TimeInterval {
     set {
-      if let animation = animation {
+      if let animation {
         currentFrame = animation.frameTime(forTime: newValue)
         currentPlaybackMode = .paused(at: .time(newValue))
       } else {
@@ -692,10 +692,10 @@ public class LottieAnimationLayer: CALayer {
       }
     }
     get {
-      if let animation = animation {
-        return animation.time(forFrame: currentFrame)
+      if let animation {
+        animation.time(forFrame: currentFrame)
       } else {
-        return 0
+        0
       }
     }
   }
@@ -721,7 +721,7 @@ public class LottieAnimationLayer: CALayer {
 
   /// Returns the current animation frame while an animation is playing.
   public var realtimeAnimationProgress: AnimationProgressTime {
-    if let animation = animation {
+    if let animation {
       return animation.progressTime(forFrame: realtimeAnimationFrame)
     }
     return 0
@@ -754,7 +754,7 @@ public class LottieAnimationLayer: CALayer {
       return engine
 
     case .automatic:
-      guard let animationLayer = animationLayer else {
+      guard let animationLayer else {
         return nil
       }
 
@@ -893,7 +893,7 @@ public class LottieAnimationLayer: CALayer {
   /// - Parameter toLayerAt: The keypath used to find the layer.
   public func convert(_ rect: CGRect, toLayerAt keypath: AnimationKeypath?) -> CGRect? {
     guard let animationLayer = rootAnimationLayer else { return nil }
-    guard let keypath = keypath else {
+    guard let keypath else {
       return convert(rect, to: animationLayer)
     }
     guard let sublayer = animationLayer.layer(for: keypath) else {
@@ -914,7 +914,7 @@ public class LottieAnimationLayer: CALayer {
   /// - Parameter toLayerAt: The keypath used to find the layer.
   public func convert(_ point: CGPoint, toLayerAt keypath: AnimationKeypath?) -> CGPoint? {
     guard let animationLayer = rootAnimationLayer else { return nil }
-    guard let keypath = keypath else {
+    guard let keypath else {
       return convert(point, to: animationLayer)
     }
     guard let sublayer = animationLayer.layer(for: keypath) else {
@@ -934,7 +934,7 @@ public class LottieAnimationLayer: CALayer {
   public func setNodeIsEnabled(isEnabled: Bool, keypath: AnimationKeypath) {
     guard let animationLayer = rootAnimationLayer else { return }
     let nodes = animationLayer.animatorNodes(for: keypath)
-    if let nodes = nodes {
+    if let nodes {
       for node in nodes {
         node.isEnabled = isEnabled
       }
@@ -951,7 +951,7 @@ public class LottieAnimationLayer: CALayer {
   ///
   /// Returns the Progress Time for the marker named. Returns nil if no marker found.
   public func progressTime(forMarker named: String) -> AnimationProgressTime? {
-    guard let animation = animation else {
+    guard let animation else {
       return nil
     }
     return animation.progressTime(forMarker: named)
@@ -966,7 +966,7 @@ public class LottieAnimationLayer: CALayer {
   ///
   /// Returns the Frame Time for the marker named. Returns nil if no marker found.
   public func frameTime(forMarker named: String) -> AnimationFrameTime? {
-    guard let animation = animation else {
+    guard let animation else {
       return nil
     }
     return animation.frameTime(forMarker: named)
@@ -981,7 +981,7 @@ public class LottieAnimationLayer: CALayer {
   ///
   /// - Returns: The duration frame time for the marker, or `nil` if no marker found.
   public func durationFrameTime(forMarker named: String) -> AnimationFrameTime? {
-    guard let animation = animation else {
+    guard let animation else {
       return nil
     }
     return animation.durationFrameTime(forMarker: named)
@@ -993,16 +993,20 @@ public class LottieAnimationLayer: CALayer {
       case .stop:
         removeCurrentAnimation()
         updateAnimationFrame(currentContext.playFrom)
+
       case .pause:
         removeCurrentAnimation()
+
       case .pauseAndRestore:
         currentContext.closure.ignoreDelegate = true
         removeCurrentAnimation()
         /// Keep the stale context around for when the app enters the foreground.
         animationContext = currentContext
+
       case .forceFinish:
         removeCurrentAnimation()
         updateAnimationFrame(currentContext.playTo)
+
       case .continuePlaying:
         break
       }
@@ -1042,14 +1046,6 @@ public class LottieAnimationLayer: CALayer {
     }
   }
 
-  func updateRasterizationState() {
-    if isAnimationPlaying {
-      animationLayer?.shouldRasterize = false
-    } else {
-      animationLayer?.shouldRasterize = shouldRasterizeWhenIdle
-    }
-  }
-
   /// Updates the animation frame. Does not affect any current animations
   func updateAnimationFrame(_ newFrame: CGFloat) {
     // In performance tests, we have to wrap the animation layer setup
@@ -1074,7 +1070,7 @@ public class LottieAnimationLayer: CALayer {
 
   /// Updates an in flight animation.
   func updateInFlightAnimation() {
-    guard let animationContext = animationContext else { return }
+    guard let animationContext else { return }
 
     guard animationContext.closure.animationState != .complete else {
       // Tried to re-add an already completed animation. Cancel.
@@ -1099,6 +1095,14 @@ public class LottieAnimationLayer: CALayer {
     addNewAnimationForContext(newContext)
   }
 
+  func updateRasterizationState() {
+    if isAnimationPlaying {
+      animationLayer?.shouldRasterize = false
+    } else {
+      animationLayer?.shouldRasterize = shouldRasterizeWhenIdle
+    }
+  }
+
   func loadAnimation(_ animationSource: LottieAnimationSource?) {
     switch animationSource {
     case .lottieAnimation(let animation):
@@ -1118,9 +1122,9 @@ public class LottieAnimationLayer: CALayer {
   fileprivate var activeAnimationName: String {
     switch rootAnimationLayer?.primaryAnimationKey {
     case .specific(let animationKey):
-      return animationKey
+      animationKey
     case .managed, nil:
-      return _activeAnimationName
+      _activeAnimationName
     }
   }
 
@@ -1143,20 +1147,21 @@ public class LottieAnimationLayer: CALayer {
 
     if let oldAnimation = animationLayer {
       oldAnimation.removeFromSuperlayer()
+      rootAnimationLayer = nil
     }
 
-    guard let animation = animation else {
+    guard let animation else {
       return
     }
-    let rootAnimationLayer: RootAnimationLayer?
-    switch renderingEngine {
-    case .automatic:
-      rootAnimationLayer = makeAutomaticEngineLayer(for: animation)
-    case .specific(.coreAnimation):
-      rootAnimationLayer = makeCoreAnimationLayer(for: animation)
-    case .specific(.mainThread):
-      rootAnimationLayer = makeMainThreadAnimationLayer(for: animation)
-    }
+    let rootAnimationLayer: RootAnimationLayer? =
+      switch renderingEngine {
+      case .automatic:
+        makeAutomaticEngineLayer(for: animation)
+      case .specific(.coreAnimation):
+        makeCoreAnimationLayer(for: animation)
+      case .specific(.mainThread):
+        makeMainThreadAnimationLayer(for: animation)
+      }
 
     guard let animationLayer = rootAnimationLayer else {
       return
@@ -1259,8 +1264,8 @@ public class LottieAnimationLayer: CALayer {
     }
   }
 
-  // Handles any compatibility issues with the Core Animation engine
-  // by falling back to the Main Thread engine
+  /// Handles any compatibility issues with the Core Animation engine
+  /// by falling back to the Main Thread engine
   fileprivate func automaticEngineLayerDidSetUpAnimation(_ compatibilityIssues: [CompatibilityIssue]) {
     // If there weren't any compatibility issues, then there's nothing else to do
     if compatibilityIssues.isEmpty {
@@ -1293,7 +1298,7 @@ public class LottieAnimationLayer: CALayer {
     // was being used by the previous Core Animation layer
     self.currentFrame = currentFrame
 
-    if let animationContext = animationContext {
+    if let animationContext {
       // `AnimationContext.closure` (`AnimationCompletionDelegate`) is a reference type
       // that is the animation layer's `CAAnimationDelegate`, and holds a reference to
       // the animation layer. Reusing a single instance across different animation layers
@@ -1327,24 +1332,11 @@ public class LottieAnimationLayer: CALayer {
 
   /// Adds animation to animation layer and sets the delegate. If animation layer or animation are nil, exits.
   fileprivate func addNewAnimationForContext(_ animationContext: AnimationContext) {
-    guard let animationlayer = rootAnimationLayer, let animation = animation else {
+    guard let animationlayer = rootAnimationLayer, let animation else {
       return
     }
 
     self.animationContext = animationContext
-
-    switch currentRenderingEngine {
-    case .mainThread:
-      // On the CALayer side, just play all animations immediately. The UIView side
-      // will handle queueing animations.
-      break
-
-    case .coreAnimation, nil:
-      // The Core Animation engine automatically batches animation setup to happen
-      // in `CALayer.display()`, which won't be called until the layer is on-screen,
-      // so we don't need to defer animation setup at this layer.
-      break
-    }
 
     animationID = animationID + 1
     _activeAnimationName = LottieAnimationLayer.animationName + String(animationID)
@@ -1475,9 +1467,9 @@ public class LottieAnimationLayer: CALayer {
   private var reducedMotionMarker: Marker? {
     switch configuration.reducedMotionOption.currentReducedMotionMode {
     case .standardMotion:
-      return nil
+      nil
     case .reducedMotion:
-      return animation?.reducedMotionMarker
+      animation?.reducedMotionMarker
     }
   }
 
@@ -1494,7 +1486,7 @@ public class LottieAnimationLayer: CALayer {
 
   /// Plays the marker that corresponds to the current "reduced motion" mode if present.
   private func playReducedMotionAnimation(completion: LottieCompletionBlock?) {
-    guard let reducedMotionMarker = reducedMotionMarker else { return }
+    guard let reducedMotionMarker else { return }
 
     // `play(marker:)` calls the `play(fromFrame:toFrame:)` method which calls this
     // `playReducedMotionAnimation` method when `shouldOverrideWithReducedMotionAnimation`
@@ -1516,15 +1508,15 @@ extension LottieLoopMode {
   var caAnimationConfiguration: (repeatCount: Float, autoreverses: Bool) {
     switch self {
     case .playOnce:
-      return (repeatCount: 1, autoreverses: false)
+      (repeatCount: 1, autoreverses: false)
     case .loop:
-      return (repeatCount: .greatestFiniteMagnitude, autoreverses: false)
+      (repeatCount: .greatestFiniteMagnitude, autoreverses: false)
     case .autoReverse:
-      return (repeatCount: .greatestFiniteMagnitude, autoreverses: true)
+      (repeatCount: .greatestFiniteMagnitude, autoreverses: true)
     case .repeat(let amount):
-      return (repeatCount: amount, autoreverses: false)
+      (repeatCount: amount, autoreverses: false)
     case .repeatBackwards(let amount):
-      return (repeatCount: amount, autoreverses: true)
+      (repeatCount: amount, autoreverses: true)
     }
   }
 }

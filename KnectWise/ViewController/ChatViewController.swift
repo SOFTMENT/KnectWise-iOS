@@ -89,6 +89,7 @@ class ChatViewController: UIViewController {
             if let destinationVC = segue.destination as? ShowChatViewController {
                 if let lastMessage = sender as? LastMessageModel {
                     destinationVC.lastMessage = lastMessage
+                    destinationVC.from = "lastchat"
                     
                 }
             }

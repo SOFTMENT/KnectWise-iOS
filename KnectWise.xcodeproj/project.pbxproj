@@ -29,6 +29,8 @@
 		5D4BB7752B414E9D003C423D /* MyGesture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D4BB7742B414E9D003C423D /* MyGesture.swift */; };
 		5D51B4412CB30EA100CE2B17 /* UserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D51B4402CB30EA100CE2B17 /* UserTableViewCell.swift */; };
 		5D6C6F7E2CC10C4000311B1D /* ShowUserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D6C6F7D2CC10C4000311B1D /* ShowUserProfileViewController.swift */; };
+		5D7072AB2CF4374300189CAD /* RoundedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D7072AA2CF4373F00189CAD /* RoundedView.swift */; };
+		5D7072AD2CF4385D00189CAD /* DisclaimerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D7072AC2CF4385B00189CAD /* DisclaimerViewController.swift */; };
 		5D70BC642B829DEA00F96ECB /* NotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D70BC632B829DEA00F96ECB /* NotificationViewController.swift */; };
 		5D70BC662B829E0300F96ECB /* NotificationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D70BC652B829E0300F96ECB /* NotificationModel.swift */; };
 		5D70BC682B829E4F00F96ECB /* AdminNotificationsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D70BC672B829E4F00F96ECB /* AdminNotificationsTableViewCell.swift */; };
@@ -50,11 +52,11 @@
 		5DE00BF92CC2472A000D8B3D /* MessagesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DE00BF82CC2472A000D8B3D /* MessagesCell.swift */; };
 		5DEC0ADB2CC13D2900C8B585 /* HomeChatTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DEC0ADA2CC13D2900C8B585 /* HomeChatTableViewCell.swift */; };
 		5DEC0ADD2CC13E2300C8B585 /* LastMessageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DEC0ADC2CC13E2300C8B585 /* LastMessageModel.swift */; };
-		CCA8998A19E17F2DF09E894F /* Pods_KnectWise.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93D5B654AFA7FE2ADF756C59 /* Pods_KnectWise.framework */; };
+		83925E2D0D023757A1EA8880 /* Pods_KnectWise.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EEA7A11217C4596879D307DF /* Pods_KnectWise.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		01493D3F4742DB0986CFD34E /* Pods-KnectWise.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KnectWise.debug.xcconfig"; path = "Target Support Files/Pods-KnectWise/Pods-KnectWise.debug.xcconfig"; sourceTree = "<group>"; };
+		5BF0833CE5E50AC823558F36 /* Pods-KnectWise.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KnectWise.release.xcconfig"; path = "Target Support Files/Pods-KnectWise/Pods-KnectWise.release.xcconfig"; sourceTree = "<group>"; };
 		5D0AB2362CCCA5560035A6CC /* BoostProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoostProfileViewController.swift; sourceTree = "<group>"; };
 		5D44CF8A2B479DBE000FA013 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		5D44CF8C2B479DCB000FA013 /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
@@ -79,6 +81,8 @@
 		5D4BB7742B414E9D003C423D /* MyGesture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyGesture.swift; sourceTree = "<group>"; };
 		5D51B4402CB30EA100CE2B17 /* UserTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTableViewCell.swift; sourceTree = "<group>"; };
 		5D6C6F7D2CC10C4000311B1D /* ShowUserProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowUserProfileViewController.swift; sourceTree = "<group>"; };
+		5D7072AA2CF4373F00189CAD /* RoundedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedView.swift; sourceTree = "<group>"; };
+		5D7072AC2CF4385B00189CAD /* DisclaimerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisclaimerViewController.swift; sourceTree = "<group>"; };
 		5D70BC632B829DEA00F96ECB /* NotificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationViewController.swift; sourceTree = "<group>"; };
 		5D70BC652B829E0300F96ECB /* NotificationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationModel.swift; sourceTree = "<group>"; };
 		5D70BC672B829E4F00F96ECB /* AdminNotificationsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminNotificationsTableViewCell.swift; sourceTree = "<group>"; };
@@ -101,8 +105,8 @@
 		5DE00BF82CC2472A000D8B3D /* MessagesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesCell.swift; sourceTree = "<group>"; };
 		5DEC0ADA2CC13D2900C8B585 /* HomeChatTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeChatTableViewCell.swift; sourceTree = "<group>"; };
 		5DEC0ADC2CC13E2300C8B585 /* LastMessageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LastMessageModel.swift; sourceTree = "<group>"; };
-		87ADC8985D30FB86C0329E8D /* Pods-KnectWise.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KnectWise.release.xcconfig"; path = "Target Support Files/Pods-KnectWise/Pods-KnectWise.release.xcconfig"; sourceTree = "<group>"; };
-		93D5B654AFA7FE2ADF756C59 /* Pods_KnectWise.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KnectWise.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		959C53677F6186B4276E11A3 /* Pods-KnectWise.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KnectWise.debug.xcconfig"; path = "Target Support Files/Pods-KnectWise/Pods-KnectWise.debug.xcconfig"; sourceTree = "<group>"; };
+		EEA7A11217C4596879D307DF /* Pods_KnectWise.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KnectWise.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,7 +114,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CCA8998A19E17F2DF09E894F /* Pods_KnectWise.framework in Frameworks */,
+				83925E2D0D023757A1EA8880 /* Pods_KnectWise.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -123,7 +127,7 @@
 				5D4BB7362B40D91E003C423D /* KnectWise */,
 				5D4BB7352B40D91E003C423D /* Products */,
 				96DA6082FD21076285250B7C /* Pods */,
-				F800F8C41254562FB4EA0121 /* Frameworks */,
+				CC6EA58CA5D621F1DB6300F9 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -166,6 +170,7 @@
 		5D4BB7642B40DD02003C423D /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				5D7072AC2CF4385B00189CAD /* DisclaimerViewController.swift */,
 				5D4BB73B2B40D91E003C423D /* WelcomeController.swift */,
 				5D4BB76A2B40E46A003C423D /* SignInViewController.swift */,
 				5D4BB76C2B40E473003C423D /* SignUpViewController.swift */,
@@ -192,6 +197,7 @@
 		5D4BB7652B40DD0B003C423D /* View */ = {
 			isa = PBXGroup;
 			children = (
+				5D7072AA2CF4373F00189CAD /* RoundedView.swift */,
 				5D4BB73D2B40D91E003C423D /* Main.storyboard */,
 				5D4BB7402B40D91F003C423D /* Assets.xcassets */,
 				5D4BB7422B40D91F003C423D /* LaunchScreen.storyboard */,
@@ -230,16 +236,16 @@
 		96DA6082FD21076285250B7C /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				01493D3F4742DB0986CFD34E /* Pods-KnectWise.debug.xcconfig */,
-				87ADC8985D30FB86C0329E8D /* Pods-KnectWise.release.xcconfig */,
+				959C53677F6186B4276E11A3 /* Pods-KnectWise.debug.xcconfig */,
+				5BF0833CE5E50AC823558F36 /* Pods-KnectWise.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
 		};
-		F800F8C41254562FB4EA0121 /* Frameworks */ = {
+		CC6EA58CA5D621F1DB6300F9 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				93D5B654AFA7FE2ADF756C59 /* Pods_KnectWise.framework */,
+				EEA7A11217C4596879D307DF /* Pods_KnectWise.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -251,12 +257,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5D4BB7482B40D91F003C423D /* Build configuration list for PBXNativeTarget "KnectWise" */;
 			buildPhases = (
-				93B66AC16E374653EA9241C6 /* [CP] Check Pods Manifest.lock */,
+				FB54FA15544908CCE732F58C /* [CP] Check Pods Manifest.lock */,
 				5D4BB7302B40D91E003C423D /* Sources */,
 				5D4BB7312B40D91E003C423D /* Frameworks */,
 				5D4BB7322B40D91E003C423D /* Resources */,
-				9E4D11551C72D35D1CB3C56C /* [CP] Embed Pods Frameworks */,
-				153F2D0DCCC5BB7017273B78 /* [CP] Copy Pods Resources */,
+				8D89F83A232598068BA11F9E /* [CP] Embed Pods Frameworks */,
+				A3C673454F3D93E76BE522EB /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -319,7 +325,24 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		153F2D0DCCC5BB7017273B78 /* [CP] Copy Pods Resources */ = {
+		8D89F83A232598068BA11F9E /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-KnectWise/Pods-KnectWise-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-KnectWise/Pods-KnectWise-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-KnectWise/Pods-KnectWise-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A3C673454F3D93E76BE522EB /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -336,7 +359,7 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-KnectWise/Pods-KnectWise-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		93B66AC16E374653EA9241C6 /* [CP] Check Pods Manifest.lock */ = {
+		FB54FA15544908CCE732F58C /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -356,23 +379,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		9E4D11551C72D35D1CB3C56C /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-KnectWise/Pods-KnectWise-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-KnectWise/Pods-KnectWise-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-KnectWise/Pods-KnectWise-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -402,6 +408,7 @@
 				5DE00BF52CC24165000D8B3D /* ShowChatViewController.swift in Sources */,
 				5D4BB7692B40E40F003C423D /* UserModel.swift in Sources */,
 				5D4BB76B2B40E46A003C423D /* SignInViewController.swift in Sources */,
+				5D7072AB2CF4374300189CAD /* RoundedView.swift in Sources */,
 				5D44CF8F2B479DD5000FA013 /* ProfileViewController.swift in Sources */,
 				5DEC0ADB2CC13D2900C8B585 /* HomeChatTableViewCell.swift in Sources */,
 				5D70BC642B829DEA00F96ECB /* NotificationViewController.swift in Sources */,
@@ -414,6 +421,7 @@
 				5DABB3722B45EDD6006AE8A8 /* ProfileInfo2ViewController.swift in Sources */,
 				5D44CF8D2B479DCB000FA013 /* ChatViewController.swift in Sources */,
 				5D70BC682B829E4F00F96ECB /* AdminNotificationsTableViewCell.swift in Sources */,
+				5D7072AD2CF4385D00189CAD /* DisclaimerViewController.swift in Sources */,
 				5DAF12DF2B93D4C500089CF0 /* EditProfile2ViewController.swift in Sources */,
 				5D4BB7732B40E7A4003C423D /* Constants.swift in Sources */,
 				5DE00BF72CC24499000D8B3D /* AllMessageModel.swift in Sources */,
@@ -563,27 +571,27 @@
 		};
 		5D4BB7492B40D91F003C423D /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 01493D3F4742DB0986CFD34E /* Pods-KnectWise.debug.xcconfig */;
+			baseConfigurationReference = 959C53677F6186B4276E11A3 /* Pods-KnectWise.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = KnectWise/KnectWise.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 13;
+				CURRENT_PROJECT_VERSION = 18;
 				DEVELOPMENT_TEAM = 7W2Q7GCKZ5;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = KnectWise/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = KnectWise;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.social-networking";
-				INFOPLIST_KEY_NSAppleMusicUsageDescription = "KnectWise app need your media library access to fetch profile photo.";
-				INFOPLIST_KEY_NSCameraUsageDescription = "KnectWise app need your camera access to capture profile photo.";
-				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "KnectWise app need your location to show nearby users.";
-				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "KnectWise app need your location, even when the app is in the background, to continuously show nearby users.";
-				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "KnectWise need your location to show nearby user.";
-				INFOPLIST_KEY_NSMicrophoneUsageDescription = "KnectWise app need your microphone access to record video.";
-				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "KnectWise app need your photo library access to fetch profile photo.";
+				INFOPLIST_KEY_NSAppleMusicUsageDescription = "KnectWise needs access to your media library to allow you to select a profile photo from your library for your user profile.";
+				INFOPLIST_KEY_NSCameraUsageDescription = "KnectWise needs access to your camera to allow you to capture a profile photo directly within the app.";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "KnectWise needs your location, even when the app is in the background, to continuously show nearby users and maintain accurate connections.";
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "KnectWise needs access to your location to show nearby users within a 1 km radius, enhancing your connection experience.";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "KnectWise needs your location to show nearby users within a 1 km radius, enhancing your social experience.";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "KnectWise needs your microphone access to allow you to record and upload audio messages to share with your friends and connections. This enhances your profile and interaction within the app.";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "KnectWise needs access to your photo library to allow you to upload a profile photo for your user account.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -594,7 +602,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.94;
+				MARKETING_VERSION = 1.99;
 				PRODUCT_BUNDLE_IDENTIFIER = in.softment.KnectWise;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -610,27 +618,27 @@
 		};
 		5D4BB74A2B40D91F003C423D /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 87ADC8985D30FB86C0329E8D /* Pods-KnectWise.release.xcconfig */;
+			baseConfigurationReference = 5BF0833CE5E50AC823558F36 /* Pods-KnectWise.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = KnectWise/KnectWise.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 13;
+				CURRENT_PROJECT_VERSION = 18;
 				DEVELOPMENT_TEAM = 7W2Q7GCKZ5;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = KnectWise/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = KnectWise;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.social-networking";
-				INFOPLIST_KEY_NSAppleMusicUsageDescription = "KnectWise app need your media library access to fetch profile photo.";
-				INFOPLIST_KEY_NSCameraUsageDescription = "KnectWise app need your camera access to capture profile photo.";
-				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "KnectWise app need your location to show nearby users.";
-				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "KnectWise app need your location, even when the app is in the background, to continuously show nearby users.";
-				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "KnectWise need your location to show nearby user.";
-				INFOPLIST_KEY_NSMicrophoneUsageDescription = "KnectWise app need your microphone access to record video.";
-				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "KnectWise app need your photo library access to fetch profile photo.";
+				INFOPLIST_KEY_NSAppleMusicUsageDescription = "KnectWise needs access to your media library to allow you to select a profile photo from your library for your user profile.";
+				INFOPLIST_KEY_NSCameraUsageDescription = "KnectWise needs access to your camera to allow you to capture a profile photo directly within the app.";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "KnectWise needs your location, even when the app is in the background, to continuously show nearby users and maintain accurate connections.";
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "KnectWise needs access to your location to show nearby users within a 1 km radius, enhancing your connection experience.";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "KnectWise needs your location to show nearby users within a 1 km radius, enhancing your social experience.";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "KnectWise needs your microphone access to allow you to record and upload audio messages to share with your friends and connections. This enhances your profile and interaction within the app.";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "KnectWise needs access to your photo library to allow you to upload a profile photo for your user account.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -641,7 +649,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.94;
+				MARKETING_VERSION = 1.99;
 				PRODUCT_BUNDLE_IDENTIFIER = in.softment.KnectWise;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";

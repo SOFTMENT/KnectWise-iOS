@@ -5,7 +5,6 @@
 //  Created by Brandon Withrow on 2/4/19.
 //
 
-import Foundation
 import QuartzCore
 
 extension KeypathSearchable {
@@ -125,12 +124,12 @@ extension KeypathSearchable {
   func allKeypaths(for keyPath: AnimationKeypath? = nil) -> [String] {
     var allKeypaths: [String] = []
 
-    let newKeypath: AnimationKeypath
-    if let previousKeypath = keyPath {
-      newKeypath = previousKeypath.appendingKey(keypathName)
-    } else {
-      newKeypath = AnimationKeypath(keys: [keypathName])
-    }
+    let newKeypath: AnimationKeypath =
+      if let previousKeypath = keyPath {
+        previousKeypath.appendingKey(keypathName)
+      } else {
+        AnimationKeypath(keys: [keypathName])
+      }
 
     allKeypaths.append(newKeypath.fullPath)
 
@@ -149,12 +148,12 @@ extension KeypathSearchable {
   func layerKeypaths(for keyPath: AnimationKeypath? = nil) -> [CALayer: AnimationKeypath] {
     var allKeypaths: [CALayer: AnimationKeypath] = [:]
 
-    let newKeypath: AnimationKeypath
-    if let previousKeypath = keyPath {
-      newKeypath = previousKeypath.appendingKey(keypathName)
-    } else {
-      newKeypath = AnimationKeypath(keys: [keypathName])
-    }
+    let newKeypath: AnimationKeypath =
+      if let previousKeypath = keyPath {
+        previousKeypath.appendingKey(keypathName)
+      } else {
+        AnimationKeypath(keys: [keypathName])
+      }
 
     if let layer = self as? CALayer {
       allKeypaths[layer] = newKeypath
@@ -198,10 +197,10 @@ extension AnimationKeypath {
     keys.joined(separator: ".")
   }
 
-  // Pops the top keypath from the stack if the keyname matches.
+  /// Pops the top keypath from the stack if the keyname matches.
   func popKey(_ keyname: String) -> AnimationKeypath? {
     guard
-      let currentKey = currentKey,
+      let currentKey,
       currentKey.equalsKeypath(keyname),
       keys.count > 1
     else {
@@ -215,7 +214,7 @@ extension AnimationKeypath {
     if currentKey.keyPathType == .fuzzyWildcard {
       /// Dont remove if current key is a fuzzy wildcard, and if the next keypath doesnt equal keypathname
       if
-        let nextKeypath = nextKeypath,
+        let nextKeypath,
         nextKeypath.equalsKeypath(keyname)
       {
         /// Remove next two keypaths. This keypath breaks the wildcard.
@@ -246,11 +245,11 @@ extension String {
   var keyPathType: KeyType {
     switch self {
     case "*":
-      return .wildcard
+      .wildcard
     case "**":
-      return .fuzzyWildcard
+      .fuzzyWildcard
     default:
-      return .specific
+      .specific
     }
   }
 

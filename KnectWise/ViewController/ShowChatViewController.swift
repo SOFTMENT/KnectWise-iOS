@@ -13,7 +13,8 @@ import SDWebImage
 class ShowChatViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextViewDelegate {
     
     @IBOutlet var userImageAndName: UIStackView!
-    @IBOutlet var videoCallBtn: UIView!
+    @IBOutlet weak var menuBtn: UIImageView!
+    
     @IBOutlet var bottomConst: NSLayoutConstraint!
     @IBOutlet var backView: UIView!
    
@@ -26,7 +27,7 @@ class ShowChatViewController: UIViewController, UITableViewDelegate, UITableView
     var lastMessage: LastMessageModel?
     var callUUID = ""
     var mInfo = [String : String]()
-    
+    var from : String = "profile"
     override func viewDidLoad() {
         
         super.viewDidLoad()
@@ -72,12 +73,18 @@ class ShowChatViewController: UIViewController, UITableViewDelegate, UITableView
 
         self.myTextField.textContainerInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
 
-        self.userImageAndName.isUserInteractionEnabled = true
-        self.userImageAndName.addGestureRecognizer(UITapGestureRecognizer(
-            target: self,
-            action: #selector(self.userProfileClikced)
-        ))
+        if from == "lastchat" {
+            self.userImageAndName.isUserInteractionEnabled = true
+            self.userImageAndName.addGestureRecognizer(UITapGestureRecognizer(
+                target: self,
+                action: #selector(self.userProfileClikced)
+            ))
+        }
+        
 
+        let myGest1 = MyGesture(target: self, action: #selector(menuClicked))
+        menuBtn.isUserInteractionEnabled = true
+        menuBtn.addGestureRecognizer(myGest1)
         
 
         NotificationCenter.default.addObserver(
@@ -117,7 +124,72 @@ class ShowChatViewController: UIViewController, UITableViewDelegate, UITableView
     }
 
     
-
+    @objc func menuClicked(value : MyGesture) {
+     
+        let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        alert.addAction(UIAlertAction(title: "Report", style: .default, handler: { action in
+            self.showReportAlert(uid: self.lastMessage!.senderUid!)
+        }))
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+        present(alert, animated: true)
+    }
+    @objc func showReportAlert(uid : String) {
+           // Create the AlertController
+           let alertController = UIAlertController(title: "Report User",
+                                                   message: "Please provide the reason for reporting this user.",
+                                                   preferredStyle: .alert)
+           
+           // Add a TextField to the AlertController
+           alertController.addTextField { (textField) in
+               textField.placeholder = "Enter your reason"
+               textField.borderStyle = .roundedRect
+           }
+           
+           // Add a "Submit" action
+           let submitAction = UIAlertAction(title: "Submit", style: .default) { [weak alertController] _ in
+               guard let textField = alertController?.textFields?.first else { return }
+               let reportReason = textField.text ?? ""
+               
+               self.ProgressHUDShow(text: "Reporting...")
+               FirebaseStoreManager.db.collection("ChatReports").document().setData(["reportTo" : uid ,"reason" : reportReason, "time" : Data(),"reportedBy" : FirebaseStoreManager.auth.currentUser!.uid]) { error in
+                   self.ProgressHUDHide()
+                   if let error {
+                       print("Error reporting user: \(error.localizedDescription)")
+                   } else {
+                       self.showThankYouAlert(reason: reportReason)
+                   }
+               }
+              
+           }
+           
+           // Add a "Cancel" action
+           let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+           
+           // Add actions to the AlertController
+           alertController.addAction(submitAction)
+           alertController.addAction(cancelAction)
+           
+           // Present the AlertController
+           present(alertController, animated: true, completion: nil)
+       }
+    func showThankYouAlert(reason: String) {
+        // Create a thank-you alert
+        let thankYouAlert = UIAlertController(
+            title: "Thank You!",
+            message: """
+            Thank you for reporting. We have received your reason: "\(reason)". 
+            Our team will review this and take action within 24 hours.
+            """,
+            preferredStyle: .alert
+        )
+        
+        // Add an OK button to close the alert
+        let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+        thankYouAlert.addAction(okAction)
+        
+        // Present the thank-you alert
+        present(thankYouAlert, animated: true, completion: nil)
+    }
    
 
     @objc func moreBtnClicked() {
@@ -259,12 +331,22 @@ class ShowChatViewController: UIViewController, UITableViewDelegate, UITableView
             getUserDataByID(uid: self.lastMessage!.senderUid ?? "123") { userModel, _ in
                 self.ProgressHUDHide()
                 if let userModel = userModel {
-                    self.performSegue(withIdentifier: "chatViewUserProfileSeg", sender: userModel)
+                    self.performSegue(withIdentifier: "profileSeg", sender: userModel)
                 }
             }
         
     }
 
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "profileSeg" {
+            if let VC = segue.destination as? ShowUserProfileViewController {
+                if let userModel = sender as? UserModel {
+                    VC.userModel = userModel
+                }
+            }
+        }
+    }
+    
     func loadData() {
         ProgressHUDShow(text: "Loading...")
         guard let friendUid = lastMessage!.senderUid else {
@@ -317,10 +399,10 @@ class ShowChatViewController: UIViewController, UITableViewDelegate, UITableView
     }
 
     override func viewWillAppear(_: Bool) {
-        IQKeyboardManager.shared.enable = false
+        IQKeyboardManager.shared.isEnabled = false
     }
 
     override func viewWillDisappear(_: Bool) {
-        IQKeyboardManager.shared.enable = true
+        IQKeyboardManager.shared.isEnabled = true
     }
 }

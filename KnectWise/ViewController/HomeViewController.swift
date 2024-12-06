@@ -7,7 +7,7 @@
 
 import UIKit
 import CoreLocation
-import Firebase
+
 import GeoFire
 
 
@@ -24,16 +24,11 @@ class HomeViewController : UIViewController, CLLocationManagerDelegate {
     var userModels : [UserModel] = []
     var useUserModels : [UserModel] = []
     
-    
-    
     @IBOutlet weak var searchTF: UITextField!
     private let locationManager = CLLocationManager()
     private var timer: Timer?
-
     private let RADIUS_IN_METERS : Double = 1000.0
-
-    
-
+    var blockedUserIds : [String] = []
     override func viewDidLoad() {
         
         guard let userModel = UserModel.data else {
@@ -71,20 +66,37 @@ class HomeViewController : UIViewController, CLLocationManagerDelegate {
         view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(viewClicked)))
         
        
+        self.ProgressHUDShow(text: "")
+        FirebaseStoreManager.db.collection("Users").document(userModel.uid!).collection("Blocked").getDocuments { snapshot, error in
+            if let snapshot = snapshot, !snapshot.isEmpty {
+                for qdr in snapshot.documents {
+                    self.blockedUserIds.append(qdr.documentID)
+                }
+                self.continueToGetUser()
+            }
+            else {
+                self.continueToGetUser()
+            }
+        }
         
-        if userModel.email == "vijay@softmet.com" {
+        
+        
+    }
+    
+    func continueToGetUser() {
+        if UserModel.data!.email == "vijay@softment.com" {
             
             getAllUsers()
         }
         else {
-         
+            self.ProgressHUDHide()
             self.fetchAndUploadLocation()
             startLocationUpdates()
             
         }
-        
-        
+
     }
+    
     override func viewWillAppear(_ animated: Bool) {
         let daysLeft =  self.boostDaysLeft(boostExpirationDate: UserModel.data!.boostExpireDate ?? Date())
         if daysLeft > 0 {
@@ -122,7 +134,7 @@ class HomeViewController : UIViewController, CLLocationManagerDelegate {
        }
        
     private func uploadLocationToFirebase(latitude: Double, longitude: Double, geohash: String) {
-        guard let userId = Auth.auth().currentUser?.uid else { return } // Ensure user is authenticated
+        guard let userId = FirebaseStoreManager.auth.currentUser?.uid else { return } // Ensure user is authenticated
         
         UserModel.data?.latitude = latitude
         UserModel.data?.longtitude = longitude
@@ -134,6 +146,7 @@ class HomeViewController : UIViewController, CLLocationManagerDelegate {
     
     func getAllUsers() {
         
+      
         userModels.removeAll()
         useUserModels.removeAll()
         
@@ -141,19 +154,30 @@ class HomeViewController : UIViewController, CLLocationManagerDelegate {
         let query = FirebaseStoreManager.db.collection("Users")
            
              query.getDocuments(completion: { snapshot, error in
+                 self.ProgressHUDHide()
                  guard let documents = snapshot?.documents else {
-    
+                  
+                 
                      return
                  }
                  
                  for document in documents {
-                  
+                
                      if let userModel = try? document.data(as: UserModel.self) {
-                           
-                         if userModel.uid != Auth.auth().currentUser?.uid {
-                             self.userModels.append(userModel)
-                             self.useUserModels.append(userModel)
+                         if let image = userModel.profilePic, !image.isEmpty {
+                             if userModel.uid != FirebaseStoreManager.auth.currentUser?.uid {
+                                 
+                                 
+                                
+                                 if !self.blockedUserIds.contains(userModel.uid ?? "") {
+                                     self.userModels.append(userModel)
+                                     self.useUserModels.append(userModel)
+                                 }
+                                 
+                                 
+                             }
                          }
+                         
                                                  
                              }
                          }
@@ -202,9 +226,11 @@ class HomeViewController : UIViewController, CLLocationManagerDelegate {
                                      userModel.isBoosted = daysLeft > 0
                                 }
                                  
-                                 if userModel.uid != Auth.auth().currentUser?.uid {
-                                     self.userModels.append(userModel)
-                                     self.useUserModels.append(userModel)
+                                 if userModel.uid != FirebaseStoreManager.auth.currentUser?.uid {
+                                     if !self.blockedUserIds.contains(userModel.uid ?? "") {
+                                         self.userModels.append(userModel)
+                                         self.useUserModels.append(userModel)
+                                     }
                                  }
                                                          
                              }
@@ -260,6 +286,62 @@ class HomeViewController : UIViewController, CLLocationManagerDelegate {
         }
     }
     
+    @objc func menuClicked(value : MyGesture) {
+        let userModel = self.useUserModels[value.index]
+        let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        alert.addAction(UIAlertAction(title: "Report & Block", style: .default, handler: { action in
+            self.showReportAlert(uid: userModel.uid!)
+        }))
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+        present(alert, animated: true)
+    }
+    @objc func showReportAlert(uid : String) {
+           // Create the AlertController
+           let alertController = UIAlertController(title: "Report & Block User",
+                                                   message: "Please provide the reason for reporting this user.",
+                                                   preferredStyle: .alert)
+           
+           // Add a TextField to the AlertController
+           alertController.addTextField { (textField) in
+               textField.placeholder = "Enter your reason"
+               textField.borderStyle = .roundedRect
+           }
+           
+           // Add a "Submit" action
+           let submitAction = UIAlertAction(title: "Submit", style: .default) { [weak alertController] _ in
+               guard let textField = alertController?.textFields?.first else { return }
+               let reportReason = textField.text ?? ""
+               
+               self.ProgressHUDShow(text: "Reporting...")
+               FirebaseStoreManager.db.collection("Reports").document().setData(["reportTo" : uid ,"reason" : reportReason, "time" : Data(),"reportedBy" : FirebaseStoreManager.auth.currentUser!.uid]) { error in
+                   self.ProgressHUDHide()
+                   if let error {
+                       print("Error reporting user: \(error.localizedDescription)")
+                   } else {
+                       self.showThankYouAlert(uid: uid)
+                   }
+               }
+              
+           }
+           
+           // Add a "Cancel" action
+           let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+           
+           // Add actions to the AlertController
+           alertController.addAction(submitAction)
+           alertController.addAction(cancelAction)
+           
+           // Present the AlertController
+           present(alertController, animated: true, completion: nil)
+       }
+    func showThankYouAlert(uid : String) {
+        self.showSnack(messages: "Blocked")
+        FirebaseStoreManager.db.collection("Users").document(FirebaseStoreManager.auth.currentUser!.uid).collection("Blocked").document(uid).setData(["date" : Date()])
+        //Remove blocked user from model
+        userModels.removeAll { $0.uid == uid }
+        useUserModels.removeAll { $0.uid == uid }
+        self.tableView.reloadData()
+    }
     // Search function to filter based on the search text
     func searchUsers(searchText: String) -> [UserModel] {
         let filteredUsers = userModels.filter { user in
@@ -344,6 +426,12 @@ extension HomeViewController : UITableViewDelegate, UITableViewDataSource {
             if let path = userModel.profilePic, !path.isEmpty {
                 cell.mImage.sd_setImage(with: URL(string: path), placeholderImage: UIImage(named: "profile-placeholder"))
             }
+            
+            
+            let myGest1 = MyGesture(target: self, action: #selector(menuClicked))
+            myGest1.index = indexPath.row
+            cell.menuBtn.isUserInteractionEnabled = true
+            cell.menuBtn.addGestureRecognizer(myGest1)
             
             let myGest = MyGesture(target: self, action: #selector(cellClicked))
             myGest.index = indexPath.row

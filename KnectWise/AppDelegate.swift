@@ -70,7 +70,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Messaging.messaging().isAutoInitEnabled = true
        
         //FirebaseOptions.defaultOptions()?.deepLinkURLScheme =
-        IQKeyboardManager.shared.enable = true
+        IQKeyboardManager.shared.isEnabled = true
         FirebaseApp.configure()
     
       

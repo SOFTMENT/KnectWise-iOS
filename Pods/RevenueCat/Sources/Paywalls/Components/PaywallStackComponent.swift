@@ -18,59 +18,90 @@ import Foundation
 
 public extension PaywallComponent {
 
-    // The most common type of stack that can contain any type of PaywallComponent
-    typealias StackComponent = GenericStackComponent<PaywallComponent>
-
-    // A specialized stack that can only hold PaywallComponent.PackageComponent
-    typealias PackagesStackComponent = GenericStackComponent<PaywallComponent.PackageComponent>
-
-    struct GenericStackComponent<T: StackableComponent>: PaywallComponentBase {
+    struct StackComponent: PaywallComponentBase {
 
         let type: ComponentType
-        public let components: [T]
-        public let width: WidthSize?
+        public let components: [PaywallComponent]
+        public let size: Size
         public let spacing: CGFloat?
-        public let backgroundColor: ColorInfo?
+        public let backgroundColor: ColorScheme?
         public let dimension: Dimension
         public let padding: Padding
         public let margin: Padding
-        public let cornerRadiuses: CornerRadiuses?
+        public let shape: Shape?
         public let border: Border?
+        public let shadow: Shadow?
 
-        public init(components: [T],
-                    dimension: Dimension = .vertical(.center),
-                    width: WidthSize? = nil,
-                    spacing: CGFloat? = 0,
-                    backgroundColor: ColorInfo? = nil,
-                    padding: Padding = .zero,
-                    margin: Padding = .zero,
-                    cornerRadiuses: CornerRadiuses? = nil,
-                    border: Border? = nil
+        public let overrides: ComponentOverrides<PartialStackComponent>?
+
+        public init(
+            components: [PaywallComponent],
+            dimension: Dimension = .vertical(.center, .start),
+            size: Size = .init(width: .fill, height: .fit),
+            spacing: CGFloat? = nil,
+            backgroundColor: ColorScheme? = nil,
+            padding: Padding = .zero,
+            margin: Padding = .zero,
+            shape: Shape? = nil,
+            border: Border? = nil,
+            shadow: Shadow? = nil,
+            overrides: ComponentOverrides<PartialStackComponent>? = nil
         ) {
             self.components = components
-            self.width = width
+            self.size = size
             self.spacing = spacing
             self.backgroundColor = backgroundColor
             self.type = .stack
             self.dimension = dimension
             self.padding = padding
             self.margin = margin
-            self.cornerRadiuses = cornerRadiuses
+            self.shape = shape
             self.border = border
+            self.shadow = shadow
+            self.overrides = overrides
+        }
+
+    }
+
+    struct PartialStackComponent: PartialComponent {
+
+        public let visible: Bool?
+        public let size: Size?
+        public let spacing: CGFloat?
+        public let backgroundColor: ColorScheme?
+        public let dimension: Dimension?
+        public let padding: Padding?
+        public let margin: Padding?
+        public let shape: Shape?
+        public let border: Border?
+        public let shadow: Shadow?
+
+        public init(
+            visible: Bool? = true,
+            dimension: Dimension? = nil,
+            size: Size? = nil,
+            spacing: CGFloat? = nil,
+            backgroundColor: ColorScheme? = nil,
+            padding: Padding? = nil,
+            margin: Padding? = nil,
+            shape: Shape? = nil,
+            border: Border? = nil,
+            shadow: Shadow? = nil
+        ) {
+            self.visible = visible
+            self.size = size
+            self.spacing = spacing
+            self.backgroundColor = backgroundColor
+            self.dimension = dimension
+            self.padding = padding
+            self.margin = margin
+            self.shape = shape
+            self.border = border
+            self.shadow = shadow
         }
 
     }
 
 }
-
-public extension PaywallComponent {
-
-    // Components that can be contained in a stack
-    protocol StackableComponent: PaywallComponentBase {}
-
-}
-
-extension PaywallComponent: PaywallComponent.StackableComponent {}
-extension PaywallComponent.PackageComponent: PaywallComponent.StackableComponent {}
 
 #endif

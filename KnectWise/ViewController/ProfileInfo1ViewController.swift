@@ -127,7 +127,7 @@ class ProfileInfo1ViewController : UIViewController {
                 for media in medias {
                     
                 
-                    switch Int(media.id!) {
+                    switch media.index! {
                    
                     case 1:
                         if let url = media.url, !url.isEmpty {
@@ -301,7 +301,7 @@ class ProfileInfo1ViewController : UIViewController {
     }
     
     @objc func deleteMedia(id : String){
-        self.deleteMediaOfCloud(folderPath: "Gallery/\(FirebaseStoreManager.auth.currentUser!.uid)/\(FirebaseStoreManager.auth.currentUser!.uid)\(id)")
+        self.deleteMediaOfCloud(folderPath: "Gallery/\(FirebaseStoreManager.auth.currentUser!.uid)\(id)")
         FirebaseStoreManager.db.collection("Users").document(FirebaseStoreManager.auth.currentUser!.uid).collection("Media").document(id).delete()
     }
     
@@ -444,7 +444,7 @@ extension ProfileInfo1ViewController : UIImagePickerControllerDelegate, UINaviga
                     if let url = url {
                         DispatchQueue.main.async {
                             let id  = FirebaseStoreManager.db.collection("Users").document(FirebaseStoreManager.auth.currentUser!.uid).collection("Media").document().documentID
-                            self.uploadMediaOnCloud(media: .video(url, folderName: "Gallery/\(FirebaseStoreManager.auth.currentUser!.uid)"), id: String(self.imageIndex)) { downloadUrl, error in
+                            self.uploadMediaOnCloud(media: .video(url, folderName: "Gallery"), id: String(self.imageIndex)) { downloadUrl, error in
                                 DispatchQueue.main.async {
                                     if let error = error {
                                         self.showError(error.localizedLowercase)
@@ -605,7 +605,7 @@ extension ProfileInfo1ViewController : UIImagePickerControllerDelegate, UINaviga
     
     
     func uploadImage(id : String, index : Int, image : UIImage){
-        self.uploadMediaOnCloud(media: .image(image, folderName: "Gallery/\(FirebaseStoreManager.auth.currentUser!.uid)"), id: String(index)) { downloadURL, error in
+        self.uploadMediaOnCloud(media: .image(image, folderName: "Gallery"), id: String(index)) { downloadURL, error in
             DispatchQueue.main.async {
                 if let error = error {
                     self.showError(error)

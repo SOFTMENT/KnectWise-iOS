@@ -5,11 +5,6 @@
 //  Created by Brandon Withrow on 1/25/19.
 //
 
-import CoreGraphics
-import CoreText
-import Foundation
-import QuartzCore
-
 /// Needed for NSMutableParagraphStyle...
 #if os(OSX)
 import AppKit
@@ -21,22 +16,22 @@ extension TextJustification {
   var textAlignment: NSTextAlignment {
     switch self {
     case .left:
-      return .left
+      .left
     case .right:
-      return .right
+      .right
     case .center:
-      return .center
+      .center
     }
   }
 
   var caTextAlignement: CATextLayerAlignmentMode {
     switch self {
     case .left:
-      return .left
+      .left
     case .right:
-      return .right
+      .right
     case .center:
-      return .center
+      .center
     }
   }
 }
@@ -69,7 +64,7 @@ final class TextCompositionLayer: CompositionLayer {
     self.textLayer.masksToBounds = false
     self.textLayer.isGeometryFlipped = true
 
-    if let rootNode = rootNode {
+    if let rootNode {
       childKeypaths.append(rootNode)
     }
   }
@@ -102,17 +97,15 @@ final class TextCompositionLayer: CompositionLayer {
   var fontProvider: AnimationFontProvider
   weak var rootAnimationLayer: MainThreadAnimationLayer?
 
-  lazy var fullAnimationKeypath: AnimationKeypath = {
-    // Individual layers don't know their full keypaths, so we have to delegate
+  lazy var fullAnimationKeypath: AnimationKeypath = // Individual layers don't know their full keypaths, so we have to delegate
     // to the `MainThreadAnimationLayer` to search the layer hierarchy and find
     // the full keypath (which includes this layer's parent layers)
     rootAnimationLayer?.keypath(for: self)
-      // If that failed for some reason, just use the last path component (which we do have here)
-      ?? AnimationKeypath(keypath: keypathName)
-  }()
+    // If that failed for some reason, just use the last path component (which we do have here)
+    ?? AnimationKeypath(keypath: keypathName)
 
   override func displayContentsWithFrame(frame: CGFloat, forceUpdates: Bool) {
-    guard let textDocument = textDocument else { return }
+    guard let textDocument else { return }
 
     textLayer.contentsScale = renderScale
 
@@ -128,20 +121,24 @@ final class TextCompositionLayer: CompositionLayer {
     // Prior to Lottie 4.3.0 the Main Thread rendering engine always just used `LegacyAnimationTextProvider`
     // and called it with the `keypathName` (only the last path component of the full keypath).
     // Starting in Lottie 4.3.0 we use `AnimationKeypathTextProvider` instead if implemented.
-    let textString: String
-    if let keypathTextValue = textProvider.text(for: fullAnimationKeypath, sourceText: text.text) {
-      textString = keypathTextValue
-    } else if let legacyTextProvider = textProvider as? LegacyAnimationTextProvider {
-      textString = legacyTextProvider.textFor(keypathName: keypathName, sourceText: text.text)
-    } else {
-      textString = text.text
-    }
+    let textString: String =
+      if let keypathTextValue = textProvider.text(for: fullAnimationKeypath, sourceText: text.text) {
+        keypathTextValue
+      } else if let legacyTextProvider = textProvider as? LegacyAnimationTextProvider {
+        legacyTextProvider.textFor(keypathName: keypathName, sourceText: text.text)
+      } else {
+        text.text
+      }
 
     let strokeColor = rootNode?.textOutputNode.strokeColor ?? text.strokeColorData?.cgColorValue
     let strokeWidth = rootNode?.textOutputNode.strokeWidth ?? CGFloat(text.strokeWidth ?? 0)
     let tracking = (CGFloat(text.fontSize) * (rootNode?.textOutputNode.tracking ?? CGFloat(text.tracking))) / 1000.0
     let matrix = rootNode?.textOutputNode.xform ?? CATransform3DIdentity
     let ctFont = fontProvider.fontFor(family: text.fontFamily, size: CGFloat(text.fontSize))
+    let start = rootNode?.textOutputNode.start.flatMap { Int($0) }
+    let end = rootNode?.textOutputNode.end.flatMap { Int($0) }
+    let selectedRangeOpacity = rootNode?.textOutputNode.selectedRangeOpacity
+    let textRangeUnit = rootNode?.textAnimatorProperties.textRangeUnit
 
     // Set all of the text layer options
     textLayer.text = textString
@@ -149,6 +146,12 @@ final class TextCompositionLayer: CompositionLayer {
     textLayer.alignment = text.justification.textAlignment
     textLayer.lineHeight = CGFloat(text.lineHeight)
     textLayer.tracking = tracking
+
+    // Configure the text animators
+    textLayer.start = start
+    textLayer.end = end
+    textLayer.textRangeUnit = textRangeUnit
+    textLayer.selectedRangeOpacity = selectedRangeOpacity
 
     if let fillColor = rootNode?.textOutputNode.fillColor {
       textLayer.fillColor = fillColor

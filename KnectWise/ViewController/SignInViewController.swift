@@ -74,7 +74,7 @@ class SignInViewController : UIViewController {
                     self.showMessage(title: "RESET PASSWORD", message: "We have sent reset password link on your mail address.", shouldDismiss: false)
                 }
                 else {
-                    self.showError(error!.localizedDescription)
+                    self.showError("Email address does not exist.")
                 }
             }
         }

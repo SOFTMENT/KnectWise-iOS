@@ -35,6 +35,8 @@ class WelcomeViewController :  UIViewController {
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 2.5) {
             
+           
+            
             if FirebaseStoreManager.auth.currentUser != nil {
                 
                 self.getUserData(uid:FirebaseStoreManager.auth.currentUser!.uid, showProgress: false)
@@ -42,8 +44,17 @@ class WelcomeViewController :  UIViewController {
                 
             }
             else {
+                if UserDefaults.standard.bool(forKey: "disclaimers"){
+                    self.gotoSignInViewController()
+                }
+                else {
+                    
+                   
+                        self.performSegue(withIdentifier: "disSeg", sender: nil)
+                   
+                }
                 
-                self.gotoSignInViewController()
+               
                 
             }
         }

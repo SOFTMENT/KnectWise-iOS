@@ -316,7 +316,7 @@ extension UIViewController {
 
     func getMedia(uid : String, completion : @escaping (_ medias : Array<MediaModel>?, _ error : String?)->Void) {
         
-        FirebaseStoreManager.db.collection("Users").document(FirebaseStoreManager.auth.currentUser!.uid).collection("Media").order(by: "index").getDocuments { snapshot, error in
+        FirebaseStoreManager.db.collection("Users").document(uid).collection("Media").order(by: "index").getDocuments { snapshot, error in
             if let error = error {
                 completion(nil, error.localizedDescription)
             }
@@ -777,7 +777,7 @@ extension UIViewController {
         FirebaseStoreManager.auth.signIn(with: credential) { (authResult, error) in
             MBProgressHUD.hide(for: self.view, animated: true)
             if error != nil {
-                self.handleError(error!)
+                self.showError("Incorect credentials")
                
             }
             else {

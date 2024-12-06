@@ -38,6 +38,7 @@ target 'KnectWise' do
  pod 'Cloudinary', '~> 4.0'
  
 pod 'GeoFire/Utils'
+pod 'FirebaseMessagingInterop'
 
 pod 'FirebaseFunctions'
 
